@@ -1,18 +1,17 @@
-ID,Title,Genre,Release Year,Director,Animated / Live Action
-06f51917,The Matrix,"Sci-fi, Action",1999,The Wachowskis,LA
-46410d48,The Matrix: Reloaded,"Sci-fi, Action",2003,The Wachowskis,LA
-819db520,The Matrix: Revolutions,"Sci-fi, Action",2003,The Wachowskis,LA
-b80bc0e7,Everything Everywhere All at Once,"Comedy, Fantasy, Drama",2022,"Daniel Kwan, Daniel Scheinert",LA
-bf6a6ef0,Ex Machina,Sci-fi,2014,Alex Garland,LA
-fdbcf7e5,Atlantis: The Lost Empire,Sci-fi,2001,"Gary Trousdale, Kirk Wise",A
-e1ac9c1e,Treasure Planet,Sci-fi,2002,"John Musker, Ron Clements",A
-bab1aee9,The Girl who Lept Through Time,"Sci-fi, Romance",2006,Mamoru Hosoda,A
-b2e8e9fb,Garden of Words,Drama,2013,Makoto Shinkai,A
-9adcaf56,A Bugs Life,Comedy,1998,"John Lasseter, Andrew Stanton",A
-5ff41397,Toy Story,Comedy,1995,"John Lasseter, Josh Cooley, Lee Unkrich",A
-5826c6b7,Toy Story 2,Comedy,1998,John Lasseter,A
-c3feafe2,Toy Story 3,Comedy,2010,Lee Unkrich,A
-72d26baf,Toy Story 4,Comedy,2019,Josh Cooley,A
-1b815b75,Pokemon Mew vs Mewtwo,Fantasy,1998,Kunihiko Yuyama,A
-777fbdc6,Pokemon: The Movie 2000,Fantasy,2000,"Kunihiko Yuyama, Michael Haigney",A
-694ac30c,Pokemon 3: The Movie,Fantasy,2000,Kunihiko Yuyama,A
+06f51917,The Matrix,"Sci-fi, Action",1999,The Wachowskis,1
+46410d48,The Matrix: Reloaded,"Sci-fi, Action",2003,The Wachowskis,1
+819db520,The Matrix: Revolutions,"Sci-fi, Action",2003,The Wachowskis,1
+b80bc0e7,Everything Everywhere All at Once,"Comedy, Fantasy, Drama",2022,"Daniel Kwan, Daniel Scheinert",1
+bf6a6ef0,Ex Machina,Sci-fi,2014,Alex Garland,1
+fdbcf7e5,Atlantis: The Lost Empire,Sci-fi,2001,"Gary Trousdale, Kirk Wise",0
+e1ac9c1e,Treasure Planet,Sci-fi,2002,"John Musker, Ron Clements",0
+bab1aee9,The Girl who Lept Through Time,"Sci-fi, Romance",2006,Mamoru Hosoda,0
+b2e8e9fb,Garden of Words,Drama,2013,Makoto Shinkai,0
+9adcaf56, A Bugs Life,Comedy,1998,"John Lasseter, Andrew Stanton",0
+5ff41397,Toy Story,Comedy,1995,"John Lasseter, Josh Cooley, Lee Unkrich",0
+5826c6b7,Toy Story 2,Comedy,1998,John Lasseter,0
+c3feafe2,Toy Story 3,Comedy,2010,Lee Unkrich,0
+72d26baf,Toy Story 4,Comedy,2019,Josh Cooley,0
+1b815b75,Pokemon Mew vs Mewtwo,Fantasy,1998,Kunihiko Yuyama,0
+777fbdc6,Pokemon: The Movie 2000,Fantasy,2000,"Kunihiko Yuyama, Michael Haigney",0
+694ac30c,Pokemon 3: The Movie,Fantasy,2000,Kunihiko Yuyama,0
