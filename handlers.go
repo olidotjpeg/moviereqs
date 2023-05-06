@@ -21,7 +21,7 @@ func createUserHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Log the request body
-	log.Printf("Received request to create user. Request Body: %s\n", body)
+	// log.Printf("Received request to create user. Request Body: %s\n", body)
 
 	// Parse the JSON request body
 	var userReq UserRequest
@@ -122,4 +122,40 @@ func loginHandler(db *sql.DB) http.HandlerFunc {
 		w.WriteHeader(http.StatusOK)
 		w.Write(jsonResponse)
 	}
+}
+
+func checkUserAuthHandler(w http.ResponseWriter, r *http.Request) {
+	movies := getAllMovies()
+
+	// Convert the slice of Movie structs to JSON
+	jsonData, err := json.Marshal(movies)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// Set the response headers and write the JSON data to the response body
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(jsonData)
+}
+
+func logoutHandler(w http.ResponseWriter, r *http.Request) {
+	cookie := http.Cookie{
+		Name:   "session",
+		MaxAge: -1,
+		Path:   "/",
+	}
+	http.SetCookie(w, &cookie)
+
+	response := LogoutResponse{
+		Message: "Logout Successful",
+	}
+
+	// Convert the response to JSON
+	jsonResponse, err := json.Marshal(response)
+	if err != nil {
+		http.Error(w, "Failed to create JSON response", http.StatusInternalServerError)
+		return
+	}
+
+	w.Write(jsonResponse)
 }

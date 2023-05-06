@@ -18,6 +18,13 @@ type Movie struct {
 	LiveAction  int
 }
 
+type Rating struct {
+	Id      int
+	UserId  int
+	MovieId string
+	Rating  int
+}
+
 type UserRequest struct {
 	Username string `json:"username"`
 	Password string `json:"password"`
@@ -26,6 +33,10 @@ type UserRequest struct {
 type AuthResponse struct {
 	Message string `json:"message"`
 	Token   string `json:"token"`
+}
+
+type LogoutResponse struct {
+	Message string `json:"message"`
 }
 
 const (
@@ -47,6 +58,9 @@ func main() {
 	// Register the create user endpoint
 	router.HandleFunc("/users", createUserHandler).Methods("POST")
 	router.HandleFunc("/login", loginHandler(db)).Methods("POST")
+	router.HandleFunc("/logout", logoutHandler).Methods("POST")
+	// Register the protected handler with your mux router
+	router.Handle("/protected", authenticate(http.HandlerFunc(checkUserAuthHandler)))
 
 	// Create a table in the database
 	_, err = db.Exec(`
@@ -75,6 +89,22 @@ func main() {
 		fmt.Println("Error creating table:", err)
 		return
 	}
+
+	_, err = db.Exec(`
+		CREATE TABLE IF NOT EXISTS ratings (
+			id INTEGER PRIMARY KEY AUTOINCREMENT,
+			userId TEXT NOT NULL,
+			movieId TEXT NOT NULL,
+			rating INTEGER NOT NULL
+		)
+	`)
+	if err != nil {
+		fmt.Println("Error creating table:", err)
+		return
+	}
+
+	// generateFakeRatings()
+	generateCsvData()
 
 	// Start the server
 	log.Println("Server listening on port 8080...")

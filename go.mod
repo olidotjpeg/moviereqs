@@ -8,3 +8,5 @@ require (
 	github.com/mattn/go-sqlite3 v1.14.16
 	golang.org/x/crypto v0.8.0
 )
+
+require gonum.org/v1/gonum v0.13.0 // indirect

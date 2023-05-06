@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+	"net/http"
 	"time"
 
 	"github.com/golang-jwt/jwt"
@@ -27,38 +29,38 @@ func createToken(username string) (string, error) {
 }
 
 // Middleware function to check the JWT token from the session cookie
-// func authenticate(next http.Handler) http.Handler {
-// 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-// 		// Retrieve the token from the session cookie
-// 		cookie, err := r.Cookie("session")
-// 		if err != nil {
-// 			http.Error(w, "Unauthorized", http.StatusUnauthorized)
-// 			return
-// 		}
+func authenticate(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		// Retrieve the token from the session cookie
+		cookie, err := r.Cookie("session")
+		if err != nil {
+			http.Error(w, "Unauthorized", http.StatusUnauthorized)
+			return
+		}
 
-// 		tokenString := cookie.Value
+		tokenString := cookie.Value
 
-// 		// Verify and parse the token
-// 		token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
-// 			// Verify the signing method and return the secret key
-// 			if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
-// 				return nil, fmt.Errorf("unexpected signing method: %v", token.Header["alg"])
-// 			}
-// 			return jwtSecret, nil
-// 		})
+		// Verify and parse the token
+		token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
+			// Verify the signing method and return the secret key
+			if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
+				return nil, fmt.Errorf("unexpected signing method: %v", token.Header["alg"])
+			}
+			return jwtSecret, nil
+		})
 
-// 		if err != nil {
-// 			http.Error(w, "Unauthorized", http.StatusUnauthorized)
-// 			return
-// 		}
+		if err != nil {
+			http.Error(w, "Unauthorized", http.StatusUnauthorized)
+			return
+		}
 
-// 		// Check if the token is valid
-// 		if _, ok := token.Claims.(jwt.MapClaims); !ok || !token.Valid {
-// 			http.Error(w, "Unauthorized", http.StatusUnauthorized)
-// 			return
-// 		}
+		// Check if the token is valid
+		if _, ok := token.Claims.(jwt.MapClaims); !ok || !token.Valid {
+			http.Error(w, "Unauthorized", http.StatusUnauthorized)
+			return
+		}
 
-// 		// Token is valid, proceed with the next handler
-// 		next.ServeHTTP(w, r)
-// 	})
-// }
+		// Token is valid, proceed with the next handler
+		next.ServeHTTP(w, r)
+	})
+}
